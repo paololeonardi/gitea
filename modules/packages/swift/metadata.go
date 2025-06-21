@@ -82,12 +82,18 @@ type ProgrammingLanguage struct {
 // https://schema.org/Person
 type Person struct {
 	Type       string `json:"@type,omitempty"`
+	Name       string `json:"name,omitempty"`
 	GivenName  string `json:"givenName,omitempty"`
 	MiddleName string `json:"middleName,omitempty"`
 	FamilyName string `json:"familyName,omitempty"`
 }
 
 func (p Person) String() string {
+	// If Name is set, use it directly
+	if p.Name != "" {
+		return p.Name
+	}
+
 	var sb strings.Builder
 	if p.GivenName != "" {
 		sb.WriteString(p.GivenName)
@@ -185,6 +191,7 @@ func ParsePackage(sr io.ReaderAt, size int64, mr io.Reader) (*Package, error) {
 		p.Metadata.Keywords = ssc.Keywords
 		p.Metadata.License = ssc.License
 		p.Metadata.Author = Person{
+			Name:       ssc.Author.Name,
 			GivenName:  ssc.Author.GivenName,
 			MiddleName: ssc.Author.MiddleName,
 			FamilyName: ssc.Author.FamilyName,
