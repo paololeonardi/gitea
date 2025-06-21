@@ -147,7 +147,7 @@ func TestPackageSwift(t *testing.T) {
 				"Package.swift":           contentManifest1,
 				"Package@swift-5.6.swift": contentManifest2,
 			}),
-			`{"name":"`+packageName+`","version":"`+packageVersion+`","description":"`+packageDescription+`","codeRepository":"`+packageRepositoryURL+`","author":{"givenName":"`+packageAuthor+`"},"repositoryURLs":["`+packageRepositoryURL+`"]}`,
+			`{"name":"`+packageName+`","version":"`+packageVersion+`","description":"`+packageDescription+`","codeRepository":"`+packageRepositoryURL+`","author":{"name":"`+packageAuthor+`","givenName":"`+packageAuthor+`"},"repositoryURLs":["`+packageRepositoryURL+`"]}`,
 		)
 
 		pvs, err := packages.GetVersionsByPackageType(db.DefaultContext, user.ID, packages.TypeSwift)
@@ -235,7 +235,7 @@ func TestPackageSwift(t *testing.T) {
 				"Package.swift":           contentManifest1,
 				"Package@swift-5.6.swift": contentManifest2,
 			}),
-			`{"name":"`+packageName+`","version":"`+packageVersion2+`","description":"`+packageDescription+`","codeRepository":"`+packageRepositoryURL+`","author":{"givenName":"`+packageAuthor+`"},"repositoryURLs":["`+packageRepositoryURL+`"]}`,
+			`{"name":"`+packageName+`","version":"`+packageVersion2+`","description":"`+packageDescription+`","codeRepository":"`+packageRepositoryURL+`","author":{"name":"`+packageAuthor+`","givenName":"`+packageAuthor+`"},"repositoryURLs":["`+packageRepositoryURL+`"]}`,
 		)
 
 		pvs, err := packages.GetVersionsByPackageType(db.DefaultContext, user.ID, packages.TypeSwift)

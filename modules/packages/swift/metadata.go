@@ -82,12 +82,18 @@ type ProgrammingLanguage struct {
 // https://schema.org/Person
 type Person struct {
 	Type       string `json:"@type,omitempty"`
+	Name       string `json:"name,omitempty"`
 	GivenName  string `json:"givenName,omitempty"`
 	MiddleName string `json:"middleName,omitempty"`
 	FamilyName string `json:"familyName,omitempty"`
 }
 
 func (p Person) String() string {
+	// If Name is set, use it directly
+	if p.Name != "" {
+		return p.Name
+	}
+
 	var sb strings.Builder
 	if p.GivenName != "" {
 		sb.WriteString(p.GivenName)
