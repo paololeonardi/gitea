@@ -89,6 +89,11 @@ type Person struct {
 }
 
 func (p Person) String() string {
+	// If Name is set, use it directly
+	if p.Name != "" {
+		return p.Name
+	}
+
 	var sb strings.Builder
 	if p.GivenName != "" {
 		sb.WriteString(p.GivenName)
