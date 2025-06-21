@@ -227,7 +227,7 @@ func PackageVersionMetadata(ctx *context.Context) {
 			},
 			Author: swift_module.Person{
 				Type:       "Person",
-				Name:       metadata.Author.String(),
+				Name:       metadata.Author.Name,
 				GivenName:  metadata.Author.GivenName,
 				MiddleName: metadata.Author.MiddleName,
 				FamilyName: metadata.Author.FamilyName,
